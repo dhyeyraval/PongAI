@@ -88,9 +88,8 @@ class PongAI:
             self.reward = - abs(self.ball_x - (self.player_x + self.paddle_width/2))/40
             return self.reward, game_over, self.rally
         
-        # # Small reward for keeping paddle close to ball
-        # distance_to_ball = abs(self.ball_x - (self.player_x + self.paddle_width/2))
-        # self.reward += max(0, 1 - distance_to_ball/200)  # Small positive reward for being close
+        distance_to_ball = abs(self.ball_x - (self.player_x + self.paddle_width/2))
+        self.reward += 1 - distance_to_ball/200
         
         # check ball collision with player paddle
         if self.player_y <= self.ball_y + self.ball_radius <= self.player_y + self.paddle_height:
